@@ -10,3 +10,4 @@ else:
   rnd_number = randint(min_number, max_number)
   print(rnd_number)
 
+print('image check -> docker image inspect')
