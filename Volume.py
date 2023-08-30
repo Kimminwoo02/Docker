@@ -41,3 +41,10 @@ print(' 바인드 마운트는 로컬의 데이터를 컨테이너 내부에서 
 
 
 print('docker volume inspect feedback 을 통해 볼륨의 정보를 볼 수 있다. 또한 volume rm 을 통해 볼륨을 제거할 수 있다.')
+
+
+print('DockerFile은 git과 마찬가지로 ignore가 존재하고 컨테이너화를 원치 않는 요소를 추가할 수 있다.')
+
+# 인수와 환경변수
+print('ENV를 통한 환경변수 주입이 가능하다. ENV PORT 80 과 같은 형식으로 환경변수 셋팅이 가능하다.')
+print('ARG를 통해서 동적으로 환경변수를 설정할 수 있다.')
