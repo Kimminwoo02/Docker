@@ -52,3 +52,16 @@ print('ARG를 통해서 동적으로 환경변수를 설정할 수 있다.')
 print('코드내에서  localhost 를 도커가 이해할 수 있는 특별한 도메인으로 대체해야한다.')
 print('host.docker.internal 이 도메인은 도커에 의해 인식된다. 도커가 이해하고 있고 도커 컨테이너 내부에서 호스트 머신의 IP 주소로 변환된다.') 
 print('내부적으로 이 명령은 로컬 호스트 머신의 IP주소로 변환된다.')
+
+print('docker container inspect를 통해 컨테이너의 정보를 얻을 수 있고')
+
+print('docker run --network my_network ...')
+print(' 모든 컨테이너가 서로 통신할 수 있는 네트워크가 생성된다.')
+print(' docker run -d --name mongodb mongo')
+
+print(' 볼륨과 달리 네트워크는 자동으로 생성되지 않는다。 네트워크를 사용하여 컨테이너를 실행하려면 직접 만들어야 한다。')
+print(' ｄｏｃｋｅｒ ｎｅｔｗｏｒｋ ｃｒｅａｔｅ 네트워크이름')
+
+print(' ip주소 요청을 하드코딩하는 대신 컨테이너의 이름을 입력하는 것으로 대채한다.')
+print(' host.docker.internal:')
+
