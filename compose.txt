@@ -1,0 +1,40 @@
+version: 도커 컴포즈 사양의 버전을 지정한다.
+service: 서비스의 자식은 컨테이너이다.
+현재 에플리케이션에는 3개의 자식이 존재한다.(프론트,백,db)
+컨테이너에 레이블을 지정하기 위해 원하는 이름을 골라 컨테이너에 이름을 지정할 수 있다.
+ex) backend:
+        
+    frontend:
+    mongodb:
+        image: '이미지' -> 우리가 사용하는 이미지를 작성하면 된다
+        volumes :  네임드 볼륨 지정할 때 사용
+            - ...
+            - ... 
+        env_file:
+            - ./env/mongo.env 이 파일에 특정된 모든 서비스에 대해 새 환경을 자동으로 생성
+            
+        
+        networks:
+            - goals-net : 네트워크를 생성할 수 있다. 이름은 자유롭게 
+
+
+
+        enviroment:
+            환경변수를 설정하는 곳이다.
+            MONGO_INITDB_ROOT_USERNAME : max
+            MONGO_INITDB_ROOT_PASSWORD : secret
+            이런식으로 설정 가능하다.
+        
+        backend :
+
+
+
+
+
+docker image prune -a : 현재 빌드된 모든 이미지를 삭제한다.
+
+docker-compose up : 도커 컴포즈를 실행한다.
+docker-compose down -v : 컴포즈를 종료한다. 이 때 볼륨도 같이 제거한다.
+
+
+ 
