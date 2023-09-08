@@ -26,6 +26,8 @@ ex) backend:
             이런식으로 설정 가능하다.
         
         backend :
+           build:  ./backend
+           dockerfile: Dockerfile-dev
 
 
 
@@ -37,4 +39,23 @@ docker-compose up : 도커 컴포즈를 실행한다.
 docker-compose down -v : 컴포즈를 종료한다. 이 때 볼륨도 같이 제거한다.
 
 
- 
+build : ./backend
+ 도커파일을 찾을 수 있는 곳을 알고 싶을 때 docker-compose.yaml 파일과 동일한 폴더에 있고
+그 안에 backend폴더가 있다면 도커 커포즈는 그 폴더를 살펴 dockerfile을 찾는다.
+
+build
+    context : ./backend
+    dockerfile: Dockerfile-dev
+
+만약 Dockerfile이 다른 중첩 폴더에 있고 그 중첩 폴더 외부의 폴더에 액세스해야하는 경우
+더 높은 수준의 폴더로 설정해야한다. 
+이 과정은 이미지를 수동으로 빌드하는 것을 대체한다.
+
+backend:
+    ports: 
+    - '80:80' // 외부:내부
+    
+    volumes:
+        - logs:/app/logs // 네임드 볼륨 설정
+        - ./backend:app/ // 컨테이너 내부의 app 폴더와 공유
+
