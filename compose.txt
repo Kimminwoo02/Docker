@@ -59,3 +59,20 @@ backend:
         - logs:/app/logs // 네임드 볼륨 설정
         - ./backend:app/ // 컨테이너 내부의 app 폴더와 공유
 
+
+env 환경변수 설정방법
+env전용 파일을 생성 후 값을 작성한다
+    env_file:
+        - ./backend.env
+
+
+    도커 컴포즈에만 있는 옵션
+    도커 컴포즈를 사용하면 여러 서비스를 만들고 시작한다
+    하나의 컨테이너가 다른 컨테이너에 의존할 수 있다.
+    예를 들어 강의에선 backend 컨테이너는 실행중인 mongodb 컨테이너에 의존한다
+    이럴 때 의존성을 표현할 수 있다.
+    depends_on:
+     - mongodb
+    
+
+
