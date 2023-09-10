@@ -76,3 +76,19 @@ env전용 파일을 생성 후 값을 작성한다
     
 
 
+    frontend:
+     build:./frontend // 도커파일이 보관된 곳!
+     ports:
+        - '3000:3000'
+     volumes:
+        -./frontend/src:/app/src
+    
+    
+    stdin_open: true // 이 서비스에 개방형 입력 연결이 필요하다(-it 옵션이 필요) 
+    tty : true // tty플래그는 이 터미널에 연결하기 위함이다.
+    위 두 가지 옵션으로 인터렉티브 모드에서 시작된다.
+    
+    depends_on:
+    - backend
+
+
