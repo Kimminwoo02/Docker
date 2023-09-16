@@ -74,4 +74,11 @@ Pod는 임시적이다. 쿠버네티스에 의해 교체되거나 제거되면 �
 즉 Pod 객체를 만들어 클러스터로 보내는 것이 아니라 컨트롤러 객체, 특히 Pod를 생성하는
 deployment 객체를 만드는 이유이다.
 
+create deployment를 사용하여 새 deployment 객체를 생성하면 자동으로 쿠버네티스 클러스토러 전송된다.
+이 때 --image 옵션은 deployment에서 생성된 pod의 컨테이너에 사용할 이미지를 지정할 때 사용한다. 
+kubectl get deployment 로 얼마나 deploy가 있는지 확인할수 있다.
+kubectl delete deployment first-app(이미지 이름) 으로 삭제 가능
+docker tag kub-first-app acdemind/kub-first-app 이렇게 도커 태그 지정 후
+docker push academind/kub-first-app 으로 푸시 가능하다.
+
  
