@@ -75,10 +75,23 @@ Pod는 임시적이다. 쿠버네티스에 의해 교체되거나 제거되면 �
 deployment 객체를 만드는 이유이다.
 
 create deployment를 사용하여 새 deployment 객체를 생성하면 자동으로 쿠버네티스 클러스토러 전송된다.
-이 때 --image 옵션은 deployment에서 생성된 pod의 컨테이너에 사용할 이미지를 지정할 때 사용한다. 
+이 때 --image 옵션은 deployment에서 생성된 pod의 컨테이너에 사용할 이미지를 지정할 때 사용한다.  쿠버네티스 클러스터에 있는 마스터 노드(컨트롤 플레인)로 전송한다.
 kubectl get deployment 로 얼마나 deploy가 있는지 확인할수 있다.
 kubectl delete deployment first-app(이미지 이름) 으로 삭제 가능
 docker tag kub-first-app acdemind/kub-first-app 이렇게 도커 태그 지정 후
 docker push academind/kub-first-app 으로 푸시 가능하다.
+
+Service 객체
+pod 와 pod에서 실행하는 컨테이너에 접근하기 위해 service가 필요하다. 이는 쿠버네티스가 알고있는 또 다른 객체이다.
+ip주소는 pod와 통신하는 데 훌륭한 도구가 아니다. 클러스터 내부에 있다 하더라도 pod를 찾는 건 어렵기 때문이다. (ip가 계속 바뀐다.)
+service는 pod를 그룹화 하고 공유 주소, 공유 ip주소 등을 제공한다. 이 주소는 변경되지 않는다.
+
+Service를 Deployment에 노출시키기
+kubectl에서 create를 입력하면 자동으로 service가 생성된다. 
+kubectl expose는 service를 생성하고 deployment에 의해 생성된 pod를 노출한다. -> kubectl expose deployment frist-app --type=ClusterIP(클러스터 내부에서만 연결 가능하다는 옵션) --port=8080(노출하고자 하는 포트)  이런식으로 사용할 수 있다.
+--type의 옵션으로 LoadBalancer가 있다. LoadBalancer는 service에 대한 고유 주소를 생성한다. 들어오는 트래픽을 이 service의 일부인 모든 pod에 고르게 분산시킨다.
+
+
+
 
  
